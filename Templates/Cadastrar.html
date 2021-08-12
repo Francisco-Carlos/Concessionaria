@@ -1,0 +1,111 @@
+{% extends 'header-basic.html'%}
+{% load static %}
+{% block content %}
+    <style>
+        .input-container {
+            display: -ms-flexbox; /* IE10 */
+            display: flex;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .icon {
+            padding: 10px;
+            background: dodgerblue;
+            color: white;
+            width: 200px;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            outline: none;
+        }
+
+        .input-field:focus {
+            border: 2px solid dodgerblue;
+        }
+
+        /* Set a style for the submit button */
+        .btn {
+            background-color: black;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+            font-family: 'Metamorphous', cursive;
+        }
+
+        .btn:hover {
+            opacity: 1;
+        }
+        .forms{
+            position: absolute;
+            right: 0;
+            margin: 20px;
+            max-width: 300px;
+            padding: 16px;
+            background-color:transparent;
+            margin-top: 100px;
+        }
+        body{
+            background-image: url("{% static 'tun.jpg' %}");
+            min-height: 180px;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        .a_meu{
+            text-decoration:none;
+            margin-left:10px;
+
+        }
+        .a_meu:hover{
+            color: green;
+            text-decoration:none;
+        }
+    </style>
+    <body >
+        
+        <form action="{% url 'Cadastrar' %}" style="max-width: 500px;" method="post" class="note-form forms" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h3 style="text-align: center; color: white; font-family: 'Metamorphous', cursive;">Cadastro de veiculos</h3>
+            <div class="input-container">
+                <i class="fa fa-car icon"> Nome</i>
+                {{veiculo.Nome}}
+            </div>
+
+            <div class="input-container">
+                <i class="fab fa-adn icon"> Marca</i>
+                {{veiculo.Marca}}<a href="{% url 'Marcas' %}" class="fas fa-plus a_meu"> </a>
+            </div>
+
+            <div class="input-container">
+                <i class="fas fa-donate icon"> Preço</i>
+                {{veiculo.Preco}}
+            </div>
+
+            <div class="input-container">
+                <i class="far icon">&#xf073; Ano</i>
+                {{veiculo.Ano}}
+            </div>
+
+            <div class="input-container">
+                <i class="fas fa-file-image icon"></i>
+                {{veiculo.Imagem}}
+            </div>
+            
+
+            <button class="btn" type="submit">Cadastrar</button>
+        </form>
+    </body>    
+{% endblock %}    
+    
+

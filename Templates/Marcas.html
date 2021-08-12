@@ -1,0 +1,25 @@
+{% extends 'header-basic.html' %}
+{% block content %}
+    <style>
+      div{
+        border: solid 2px gray;
+        margin-top: 90px;
+      }
+      .forms{
+        text-align:center;
+        font-size:40px;
+        font-family: 'Metamorphous', cursive;
+        color:white;
+
+      }
+    </style>
+    <div class="container" style="width:800px">
+      <form method="post" action="{% url 'Marcas' %}" class="forms">
+        {% csrf_token %}
+        <p class="">Nome da Marca</p>
+        {{marca.Marca}}
+        <button class="btn btn-success"> Cadastar </button>
+      </form>
+
+    </div>
+{% endblock %}

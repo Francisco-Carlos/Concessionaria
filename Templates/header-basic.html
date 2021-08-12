@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>  Seth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+</head>
+  <style>
+    body{
+      background-image: url("{% static 'camaro.jpg' %}");
+      background-size: 100%;
+      background-position-y: -150px;
+      background-repeat:no-repeat;
+      background-attachment: fixed;
+      
+    }
+    ul{
+      top: 50px;
+    }
+    h4{
+      font-size: 30px;
+      color: black;
+      text-align: center;
+      font-family: 'Metamorphous', cursive;
+
+    }
+    a,button{
+      text-decoration:underline;
+      color: black;
+      font-size: 30px;
+      font-family: 'Metamorphous', cursive;
+    }
+    a:hover{
+      color: white;
+      transition: .5s ease;
+    }
+    input[type=text] {
+      width: 130px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: white;
+      background-image: url('searchicon.png');
+      background-position: 10px 10px; 
+      background-repeat: no-repeat;
+      padding: 12px 20px 12px 40px;
+      -webkit-transition: width 0.4s ease-in-out;
+      transition: width 0.4s ease-in-out;
+    }
+    input[type=text]:focus{
+      width: 100%;
+    }
+
+  </style>
+  <body>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'Index' %}">Home</a> 
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'Veiculos' %}">Veiculos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'Cadastrar' %}"> Cadastrar </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " data-toggle="modal" data-target="#pesquisa"><i class="fa fa-search"></i></a>
+      </li>   
+    </ul>
+      {% block content %}
+      {% endblock %}
+
+      <!--Modal começa aqui-->
+      <div class="modal" id='pesquisa'>
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!--Modal Cabeçalho -->
+            <div class="modal-header">
+              <h4 >Pesquisar Veiculo</h4>
+              <button type="button" data-dismiss="modal" class="close">&times;</button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+              <form action="{% url 'Buscar' %}" >
+                <input type="text" name="Buscar" placeholder="pequisar">
+                <button style="width: 100%;;margin-left: 5px;margin-top: 10px;" type="submit" class="btn btn-success">enviar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
